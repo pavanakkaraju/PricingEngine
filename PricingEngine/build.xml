@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pricingEngine" default="compress">
+
+	<target name="clean">
+		<delete dir="build" />
+		<delete dir="dist" />
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="build/classes" />
+		<mkdir dir="dist" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="src" destdir="build/classes" />
+	</target>
+
+
+	 <target name="compress" depends="compile">
+		<jar destfile="dist/pricingEngine.jar" basedir="build/classes">
+			<manifest>
+				<attribute name="Main-Class"
+					value="com.retailcomp.pricing.main.ExecuteInputPrices" />
+			</manifest>
+		</jar>
+	</target>
+</project>
